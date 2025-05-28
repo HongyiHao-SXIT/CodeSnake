@@ -1,4 +1,4 @@
-package com.example.eye_track_controller_app
+package com.eye_track_app
 
 import org.junit.Test
 

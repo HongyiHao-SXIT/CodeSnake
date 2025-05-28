@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Eye_track_Controller_APP"
+rootProject.name = "Eye_track_APP"
 include(":app")
  

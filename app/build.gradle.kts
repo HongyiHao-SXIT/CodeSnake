@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.eye_track_controller_app"
+    namespace = "com.eye_track_app"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.eye_track_controller_app"
+        applicationId = "com.eye_track_app"
         minSdk = 24
         targetSdk = 35
         versionCode = 1

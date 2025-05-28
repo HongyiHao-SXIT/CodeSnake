@@ -1,4 +1,4 @@
-package com.example.eye_track_controller_app.ui.theme
+package com.eye_track_app.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -34,7 +34,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun Eye_track_Controller_APPTheme(
+fun Eye_track_APPTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,

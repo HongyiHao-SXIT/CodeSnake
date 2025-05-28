@@ -1,4 +1,4 @@
-package com.example.eye_track_controller_app.ui.theme
+package com.eye_track_app.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
