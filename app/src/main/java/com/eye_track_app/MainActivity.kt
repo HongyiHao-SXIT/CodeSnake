@@ -1,47 +1,70 @@
-package com.eye_track_app
+import android.content.Context
+import android.hardware.usb.UsbDevice
+import android.util.Log
+import com.serenegiant.usb.USBMonitor
+import com.serenegiant.usb.UVCCamera
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.eye_track_app.ui.theme.Eye_track_APPTheme
+class UsbCameraHelper(
+    private val context: Context,
+    private val usbMonitor: USBMonitor
+) {
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            Eye_track_APPTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+    private var uvcCamera: UVCCamera? = null
+
+    init {
+        usbMonitor.setDeviceConnectListener(object : USBMonitor.OnDeviceConnectListener {
+            override fun onDeviceAttach(device: UsbDevice?) {
+                Log.d(TAG, "onDeviceAttach: ${device?.deviceName}")
+                usbMonitor.requestPermission(device) // 请求用户授权
+            }
+
+            override fun onDeviceConnect(
+                device: UsbDevice?,
+                ctrlBlock: USBMonitor.UsbControlBlock?,
+                createNew: Boolean
+            ) {
+                Log.d(TAG, "onDeviceConnect: ${device?.deviceName}")
+                uvcCamera = UVCCamera().apply {
+                    open(ctrlBlock)
+                    setPreviewSize(640, 480)
+                    setFrameCallback({ frame ->
+                        // 可以在这里处理帧数据
+                    }, UVCCamera.PIXEL_FORMAT_YUV420SP)
+                    startPreview()
                 }
             }
-        }
+
+            override fun onDeviceDisconnect(
+                device: UsbDevice?,
+                ctrlBlock: USBMonitor.UsbControlBlock?
+            ) {
+                Log.d(TAG, "onDeviceDisconnect: ${device?.deviceName}")
+                uvcCamera?.stopPreview()
+                uvcCamera?.destroy()
+                uvcCamera = null
+            }
+
+            override fun onDeviceDettach(device: UsbDevice?) {
+                Log.d(TAG, "onDeviceDettach: ${device?.deviceName}")
+            }
+
+            override fun onCancel(device: UsbDevice?) {
+                Log.d(TAG, "onCancel: ${device?.deviceName}")
+            }
+        })
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+    fun startCamera(surfaceTexture: android.graphics.SurfaceTexture) {
+        uvcCamera?.setPreviewDisplay(android.view.Surface(surfaceTexture))
+    }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Eye_track_APPTheme {
-        Greeting("Android")
+    fun stopCamera() {
+        uvcCamera?.stopPreview()
+        uvcCamera?.destroy()
+        uvcCamera = null
+    }
+
+    companion object {
+        private const val TAG = "UsbCameraHelper"
     }
 }
