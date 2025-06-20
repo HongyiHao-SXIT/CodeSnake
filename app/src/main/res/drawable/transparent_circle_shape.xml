@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 白色背景矩形 -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#000" />
+        </shape>
+    </item>
+
+    <!-- 中间的透明圆形 -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#ffffff" /> <!-- 透明色 -->
+            <stroke
+                android:width="2dp"
+                android:color="#ffffff" /> <!-- 可选：添加黑色边框使圆形更明显 -->
+        </shape>
+    </item>
+</layer-list>

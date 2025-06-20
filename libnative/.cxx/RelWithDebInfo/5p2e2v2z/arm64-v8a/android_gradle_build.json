@@ -1,0 +1,42 @@
+{
+  "stringTable": {},
+  "buildFiles": [
+    "/Volumes/disk2/projects/taobao/USBCamera/libnative/src/main/cpp/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/yangdesen/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja",
+      "-C",
+      "/Volumes/disk2/projects/taobao/USBCamera/libnative/.cxx/RelWithDebInfo/5p2e2v2z/arm64-v8a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/yangdesen/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja",
+    "-C",
+    "/Volumes/disk2/projects/taobao/USBCamera/libnative/.cxx/RelWithDebInfo/5p2e2v2z/arm64-v8a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "nativelib-RelWithDebInfo-arm64-v8a": {
+      "buildCommandComponents": [
+        "/Users/yangdesen/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja",
+        "-C",
+        "/Volumes/disk2/projects/taobao/USBCamera/libnative/.cxx/RelWithDebInfo/5p2e2v2z/arm64-v8a",
+        "nativelib"
+      ],
+      "buildType": "release",
+      "abi": "arm64-v8a",
+      "artifactName": "nativelib",
+      "output": "/Volumes/disk2/projects/taobao/USBCamera/libnative/build/intermediates/cxx/RelWithDebInfo/5p2e2v2z/obj/arm64-v8a/libnativelib.so",
+      "runtimeFiles": []
+    }
+  },
+  "toolchains": {},
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

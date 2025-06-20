@@ -1,0 +1,1 @@
+/Volumes/disk2/projects/taobao/USBCamera/libnative/build/intermediates/cxx/RelWithDebInfo/5p2e2v2z/obj/arm64-v8a

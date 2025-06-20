@@ -1,0 +1,3 @@
+/Volumes/disk2/projects/taobao/USBCamera/libnative/.cxx/Debug/5i3o485k/x86/CMakeFiles/rebuild_cache.dir
+/Volumes/disk2/projects/taobao/USBCamera/libnative/.cxx/Debug/5i3o485k/x86/CMakeFiles/edit_cache.dir
+/Volumes/disk2/projects/taobao/USBCamera/libnative/.cxx/Debug/5i3o485k/x86/CMakeFiles/nativelib.dir
