@@ -183,15 +183,14 @@ public class CameraFragment extends com.jiangdg.ausbc.base.CameraFragment {
     @Override
     protected CameraRequest getCameraRequest() {
         return new CameraRequest.Builder()
-                .setPreviewWidth(1920) // camera preview width
-                .setPreviewHeight(1080) // camera preview height
-                .setRenderMode(CameraRequest.RenderMode.OPENGL) // camera render mode
-                .setDefaultRotateType(RotateType.ANGLE_180) // rotate camera image when opengl mode
-                .setAudioSource(CameraRequest.AudioSource.SOURCE_AUTO) // set audio source
+                .setPreviewWidth(1920)
+                .setPreviewHeight(1080)
+                .setRenderMode(CameraRequest.RenderMode.OPENGL)
+                .setDefaultRotateType(RotateType.ANGLE_180)
+                .setAudioSource(CameraRequest.AudioSource.SOURCE_AUTO)
 
-                .setCaptureRawImage(false) // capture raw image picture when opengl mode
-                .setRawPreviewData(false)  // preview raw image when opengl mode
-
+                .setCaptureRawImage(false)
+                .setRawPreviewData(false)
                 .create();
     }
 
