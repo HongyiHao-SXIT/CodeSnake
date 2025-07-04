@@ -1,1 +1,0 @@
-/Volumes/disk2/projects/taobao/USBCamera/libnative/src/main/cpp/CMakeLists.txt
