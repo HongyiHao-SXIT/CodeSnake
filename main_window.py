@@ -3,16 +3,13 @@ from PyQt6.QtWidgets import (
     QVBoxLayout, QWidget, QHBoxLayout
 )
 from PyQt6.QtGui import QAction
-
 from PyQt6.QtCore import Qt
 import subprocess
 import sys
 import os
-
 from editor.highlighter import PythonHighlighter
 from editor.autocomplete import AutoCompleter
 from editor.file_browser import ProjectBrowser
-
 
 class CodeSnakeMainWindow(QMainWindow):
     def __init__(self):
@@ -25,8 +22,6 @@ class CodeSnakeMainWindow(QMainWindow):
         self.output.setReadOnly(True)
         self.highlighter = PythonHighlighter(self.editor.document())
         self.completer = AutoCompleter(self)
-
-        # 左侧项目浏览器
         self.project_browser = ProjectBrowser()
 
         editor_output_split = QSplitter(Qt.Orientation.Vertical)
@@ -45,6 +40,8 @@ class CodeSnakeMainWindow(QMainWindow):
 
         self._init_menu()
         self.editor.textChanged.connect(self.handle_autocomplete)
+        # 获取内置函数和对象的名称作为补全建议
+        self.suggestions = dir(__builtins__)
 
     def _init_menu(self):
         menu_bar = self.menuBar()
@@ -92,8 +89,7 @@ class CodeSnakeMainWindow(QMainWindow):
         cursor.select(cursor.SelectionType.WordUnderCursor)
         word = cursor.selectedText()
 
-        suggestions = ["print", "input", "int", "str", "range"]
-        matches = [w for w in suggestions if w.startswith(word)]
+        matches = [w for w in self.suggestions if w.startswith(word)]
         if matches and word:
             self.completer.show_completions(matches, self.editor)
         else:
